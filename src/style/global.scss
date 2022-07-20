@@ -1,0 +1,156 @@
+@mixin display($breakAt, $breakpoint) {
+    @if $breakAt ==min {
+        @media only screen and (min-width: $breakpoint) {
+            @content;
+        }
+    }
+
+    @if $breakAt ==max {
+        @media only screen and (max-width: $breakpoint) {
+            @content;
+        }
+    }
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: currentColor;
+}
+
+html,
+body {
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    line-height: 1.5;
+    margin: 0;
+    font-family: 'Poppins', 'Mitr', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
+    @include display(max, 1028px) {
+        flex-direction: column;
+    }
+
+    >div {
+        padding: 1.5rem;
+        max-width: fit-content;
+        width: 100%;
+
+        @include display(max, 1028px) {
+            margin: 20px auto;
+        }
+
+        &.section\.1 {
+            display: block;
+
+            @include display(max, 1028px) {
+                padding: 0rem;
+            }
+        }
+    }
+}
+
+.group\.block {
+    padding: 20px 0;
+
+    >.block {
+        margin: 20px 0;
+    }
+
+    >.block:first-child {
+        margin-top: 0px;
+    }
+
+    >.block:last-child {
+        margin-bottom: 0px;
+    }
+}
+
+.block {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    border-radius: 12px;
+    // background-color: #f2f4f7;
+    background-color: white;
+    max-width: 320px;
+    border: 2px solid black;
+    box-shadow: 0 4px 0 0 black;
+    cursor: cell;
+    transition: 0.25s;
+
+    &:hover {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 0 black;
+    }
+
+    >:nth-child(2) {
+        margin-left: 15px;
+
+        div {
+            font-weight: 600;
+            font-size: 18px;
+
+            &.text {
+                font-weight: 500;
+                font-size: 13px;
+                line-height: 15px;
+            }
+        }
+    }
+
+    .flipY {
+        img {
+            transform: scaleY(-1);
+        }
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.hero {
+    width: 100%;
+    max-width: 340px;
+    padding: 1rem;
+    padding-bottom: 0;
+
+
+    >h1 {
+        margin-bottom: 0.2rem;
+    }
+}
+
+.window {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 21px;
+
+    >.header {
+        width: 100%;
+        height: 20px;
+        border-bottom: 1px solid black;
+    }
+
+    >.body {
+        padding: 15px;
+    }
+}

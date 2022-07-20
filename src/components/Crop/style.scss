@@ -1,0 +1,279 @@
+
+
+.crop\@body{
+    display: flex;
+    max-width: 400px;
+    width: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    *{
+        box-sizing: border-box;
+        -webkit-text-size-adjust: 100%;
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        line-height: 1.5;
+    }
+    *, ::before, ::after {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        border-color: currentColor;
+    }
+    .crop\@btn\.group{
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        margin-left: auto;
+        .crop\@btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            text-align: center;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            color: white;
+            background-color: #262728;
+            text-align: center;
+            user-select: none;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: 0.25s;
+            border: 1px transparent solid;
+            &:hover{
+                opacity: 0.9;
+            }
+            &.white{
+                color:inherit;
+                background: white;
+                &:hover{
+                    border: 1px black solid;
+                }
+            }
+        }
+    }
+}
+
+.crop\@container{
+    position: relative;
+    max-width: 400px;
+    max-height: 400px;
+    padding-top: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    .crop\@container\.body{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+    }
+    .crop\@upload{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #0000000a;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.25s;
+
+        &:hover{
+            background-color: #0000001c;
+        }
+        .crop\@upload\.icon{
+            width: 72px;
+            height: 72px;
+            color: #262728;
+        }
+    }
+}
+
+div.crop\@image{
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: move;
+    &.animate{
+        transition: 0.1s transform;
+    }
+}
+
+img.crop\@image{
+    width: 100%;
+    opacity: 0;
+}
+
+.crop\@view{
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 2px solid #2196f3;
+    box-shadow: 0 0 0 40px #e7e9eb73;
+    pointer-events: none;
+}
+
+.crop\@range{
+    padding: 0 20px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .crop\@range\.bar{
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 18px;
+        cursor: pointer;
+        margin: 0 12px;
+        .crop\@range\.buffer{
+            width: 100%;
+            height: 4px;
+            background: #95cbf8;
+            border-radius: 4px;
+        }
+        .crop\@range\.thumb{
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #2196f3;
+            border-radius: 100%;
+            cursor: pointer;
+            transition: 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) box-shadow;
+            &:hover{
+                box-shadow: 0 0 0 6px #2a9fff33;
+            }
+        }
+        .crop\@range\.select{
+            position: absolute;
+            border-radius: 4px;
+            height: 4px;
+            background: #2196f3;
+        }
+    }
+    .crop\@range\.icon{
+        width: 24px;
+        height: 24px;
+        color: #727272;
+    }
+}
+
+.crop\@rotate{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 4px;
+    top: -15px;
+    // height: 0;
+    transition: 0.25s;
+    .crop\@rotate\.container{
+        display: flex;
+        width: auto;
+        height: 50px;
+        align-items: flex-end;
+        cursor: pointer;
+    }
+    .crop\@rotate\.select{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        // border: rgb(85, 85, 85) 1px solid;
+        color: white;
+        background-color: #95cbf8;
+        background-color: #262728;
+        user-select: none;
+        border-radius: 5px;
+        font-size: 15px;
+        line-height: 15px;
+        &::after{
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #95cbf8;
+            background-color: #262728;
+            bottom: -2px;
+            transform: rotate(45deg);
+        }
+    }
+    .crop\@rotate\.tools{
+        position: absolute;
+        top: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 100px;
+        z-index: 10;
+        >div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 5px;
+            background-color: #525457;
+            cursor: pointer;
+            transition: 0.25s;
+            &:hover{
+                background-color: #303233;
+            }
+            >div{
+                width: 18px;
+                height: 18px;
+                transition: 0.25s;
+            }
+        }
+    }
+    .crop\@rotate\.icon{
+        width: 18px;
+        height: 18px;
+        color: #ebebeb;
+        transition: 0.25s;
+    }
+}
+
+.crop\@rotate\.container>{
+    div{
+        margin: 0 5px;
+        width: 2px;
+        height: 12px;
+        background-color: #5f6164;
+        transition: 0.25s;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+        &::before{
+            content: attr(data-text);
+            position: absolute;
+            font-size: 10px;
+            bottom: 0px;
+            color: #5f6164;
+        }
+    }
+    .highlight{
+        width: 2px;
+        height: 16px;
+        background-color: #c5c8ce;
+    }
+}
